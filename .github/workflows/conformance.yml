@@ -1,0 +1,36 @@
+name: Reciprocal Conformance
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20, 22, 24]
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: terryncew/olp-wire-canon
+          ref: v0.1-draft
+          path: _canon
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m pip install cryptography
+      - run: npm install --no-save @opentelemetry/api @opentelemetry/sdk-trace-base
+      - run: OLP_CANON_PATH="$PWD/_canon" npm test
+      - run: npm run test:real-sdk
+      - run: npm run generate
+      - run: OLP_CANON_PATH="$PWD/_canon" npm run verify:python
