@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/terryncew/cole-portable-core/schemas/cole-measurement-receipt.schema.json",
+  "title": "COLE Portable Core 2.1 derived measurement receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "kind", "receipt_version", "algorithm_id", "canonicalization_id", "spec_uri",
+    "attestation", "input_receipt_hash", "input_trace_id", "previous_input_receipt_hash",
+    "profile", "measurement", "payload_hash", "signature"
+  ],
+  "properties": {
+    "kind": {"const": "cole_measurement_receipt"},
+    "receipt_version": {"const": "0.1-draft"},
+    "algorithm_id": {"const": "cole-portable-core-2.1-draft"},
+    "canonicalization_id": {"const": "olp-canonical-json-int-v1"},
+    "spec_uri": {"const": "https://github.com/terryncew/cole-portable-core"},
+    "attestation": {"const": "self"},
+    "input_receipt_hash": {"$ref": "#/$defs/hash"},
+    "input_trace_id": {"type": "string", "pattern": "^[0-9a-f]{32}$"},
+    "previous_input_receipt_hash": {"oneOf": [{"$ref": "#/$defs/hash"}, {"type": "null"}]},
+    "profile": {"$ref": "#/$defs/profile"},
+    "measurement": {"$ref": "#/$defs/measurement"},
+    "payload_hash": {"$ref": "#/$defs/hash"},
+    "signature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "public_key", "value"],
+      "properties": {
+        "algorithm": {"const": "Ed25519"},
+        "public_key": {"$ref": "#/$defs/hash"},
+        "value": {"type": "string", "pattern": "^[0-9a-f]{128}$"}
+      }
+    }
+  },
+  "$defs": {
+    "hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "safeInteger": {"type": "integer", "minimum": -9007199254740991, "maximum": 9007199254740991},
+    "nullableSafeInteger": {"oneOf": [{"$ref": "#/$defs/safeInteger"}, {"type": "null"}]},
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_id", "signal_schema_id", "calibration_status", "calibration_corpus_hash", "calibration_sample_count",
+        "smoothing_window", "epsilon_window", "i_c_micros", "alpha_k_micros", "alpha_e_micros", "stability_delta_micros",
+        "kappa_critical_micros", "phi_min_micros", "amber_kappa_micros", "amber_epsilon_micros", "amber_dhol_micros",
+        "dhol_claim_weight_micros", "dhol_evidence_weight_micros", "dhol_relation_weight_micros"
+      ],
+      "properties": {
+        "profile_id": {"type": "string", "minLength": 1},
+        "signal_schema_id": {"oneOf": [{"type": "string", "minLength": 1}, {"type": "null"}]},
+        "calibration_status": {"enum": ["uncalibrated_reference", "synthetic_conformance", "calibrated"]},
+        "calibration_corpus_hash": {"oneOf": [{"$ref": "#/$defs/hash"}, {"type": "null"}]},
+        "calibration_sample_count": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
+        "smoothing_window": {"type": "integer", "minimum": 1, "maximum": 9007199254740991},
+        "epsilon_window": {"type": "integer", "minimum": 2, "maximum": 9007199254740991},
+        "i_c_micros": {"$ref": "#/$defs/safeInteger"},
+        "alpha_k_micros": {"$ref": "#/$defs/safeInteger"},
+        "alpha_e_micros": {"$ref": "#/$defs/safeInteger"},
+        "stability_delta_micros": {"$ref": "#/$defs/safeInteger"},
+        "kappa_critical_micros": {"$ref": "#/$defs/safeInteger"},
+        "phi_min_micros": {"$ref": "#/$defs/safeInteger"},
+        "amber_kappa_micros": {"$ref": "#/$defs/safeInteger"},
+        "amber_epsilon_micros": {"$ref": "#/$defs/safeInteger"},
+        "amber_dhol_micros": {"$ref": "#/$defs/safeInteger"},
+        "dhol_claim_weight_micros": {"$ref": "#/$defs/safeInteger"},
+        "dhol_evidence_weight_micros": {"$ref": "#/$defs/safeInteger"},
+        "dhol_relation_weight_micros": {"$ref": "#/$defs/safeInteger"}
+      }
+    },
+    "measurement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["semantic_graph_hash", "digest", "status", "support", "drift_vector"],
+      "properties": {
+        "semantic_graph_hash": {"$ref": "#/$defs/hash"},
+        "status": {"enum": ["white", "green", "amber", "red"]},
+        "digest": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["phi_star_micros", "kappa_micros", "epsilon_micros", "delta_hol_micros", "vkd_micros"],
+          "properties": {
+            "phi_star_micros": {"$ref": "#/$defs/nullableSafeInteger"},
+            "kappa_micros": {"$ref": "#/$defs/nullableSafeInteger"},
+            "epsilon_micros": {"$ref": "#/$defs/nullableSafeInteger"},
+            "delta_hol_micros": {"$ref": "#/$defs/nullableSafeInteger"},
+            "vkd_micros": {"$ref": "#/$defs/nullableSafeInteger"}
+          }
+        },
+        "support": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["claim_count", "supported_claim_count", "unsupported_claim_count", "ucr_micros"],
+          "properties": {
+            "claim_count": {"type": "integer", "minimum": 0},
+            "supported_claim_count": {"type": "integer", "minimum": 0},
+            "unsupported_claim_count": {"type": "integer", "minimum": 0},
+            "ucr_micros": {"$ref": "#/$defs/nullableSafeInteger"}
+          }
+        },
+        "drift_vector": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["claim_micros", "evidence_micros", "relation_micros"],
+          "properties": {
+            "claim_micros": {"$ref": "#/$defs/nullableSafeInteger"},
+            "evidence_micros": {"$ref": "#/$defs/nullableSafeInteger"},
+            "relation_micros": {"$ref": "#/$defs/nullableSafeInteger"}
+          }
+        }
+      }
+    }
+  }
+}
