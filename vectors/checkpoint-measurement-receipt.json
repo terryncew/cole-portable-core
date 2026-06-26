@@ -1,0 +1,85 @@
+{
+  "algorithm_id": "cole-portable-core-2.1-draft",
+  "attestation": "self",
+  "canonicalization_id": "olp-canonical-json-int-v1",
+  "checkpoint": {
+    "anchor_input_receipt_hash": "5deb86c2ce29a22a678ef0f73ac6a322813b5f5033a729af7bad48694f25d67a",
+    "anchor_measurement": {
+      "digest": {
+        "delta_hol_micros": 384900,
+        "epsilon_micros": 0,
+        "kappa_micros": 0,
+        "phi_star_micros": 990099,
+        "vkd_micros": 790099
+      },
+      "drift_vector": {
+        "claim_micros": 666666,
+        "evidence_micros": 0,
+        "relation_micros": 0
+      },
+      "semantic_graph_hash": "987e4305c8300b68a2eee65df9f0031533de99f4ea836515a5d60c5991fc775d",
+      "status": "amber",
+      "support": {
+        "claim_count": 0,
+        "supported_claim_count": 0,
+        "ucr_micros": null,
+        "unsupported_claim_count": 0
+      }
+    }
+  },
+  "input_receipt_hash": "435402712aaad4e83d45d8e9f47a47e6ed3e55251d5fc19a1a2302c7a3fd491d",
+  "input_trace_id": "cccccccccccccccccccccccccccccccc",
+  "kind": "cole_measurement_receipt",
+  "measurement": {
+    "digest": {
+      "delta_hol_micros": 54985,
+      "epsilon_micros": 0,
+      "kappa_micros": 0,
+      "phi_star_micros": 990099,
+      "vkd_micros": 790099
+    },
+    "drift_vector": {
+      "claim_micros": 95238,
+      "evidence_micros": 0,
+      "relation_micros": 0
+    },
+    "semantic_graph_hash": "987e4305c8300b68a2eee65df9f0031533de99f4ea836515a5d60c5991fc775d",
+    "status": "green",
+    "support": {
+      "claim_count": 0,
+      "supported_claim_count": 0,
+      "ucr_micros": null,
+      "unsupported_claim_count": 0
+    }
+  },
+  "payload_hash": "269ee090e5fcb45bd775319d7e039b1fca30a03d990a4fd39c649fadbf8ce0d3",
+  "previous_input_receipt_hash": "3d5b11cfed0ec7a693f4b04787f643ff58f089039ea9017bd0700cbb8f68f6f4",
+  "profile": {
+    "alpha_e_micros": 300000,
+    "alpha_k_micros": 500000,
+    "amber_dhol_micros": 350000,
+    "amber_epsilon_micros": 400000,
+    "amber_kappa_micros": 750000,
+    "calibration_corpus_hash": null,
+    "calibration_sample_count": 0,
+    "calibration_status": "synthetic_conformance",
+    "dhol_claim_weight_micros": 333334,
+    "dhol_evidence_weight_micros": 333333,
+    "dhol_relation_weight_micros": 333333,
+    "epsilon_window": 3,
+    "i_c_micros": 1000000,
+    "kappa_critical_micros": 850000,
+    "phi_min_micros": 200000,
+    "profile_id": "synthetic-conformance-only-1",
+    "signal_schema_id": "test.normalized-signal.v1",
+    "smoothing_window": 1,
+    "stability_delta_micros": 10000
+  },
+  "receipt_version": "0.1-draft",
+  "signature": {
+    "algorithm": "Ed25519",
+    "public_key": "a09aa5f47a6759802ff955f8dc2d2a14a5c99d23be97f864127ff9383455a4f0",
+    "value": "41185b153bf6156fc9c28ae3888459e5bbc1aa9ae460bd8df528c1735ad65245706c42c3afe3d3ab314cb0b4eb8dabb510d48a5a7271e47c38dae8887445ea04"
+  },
+  "spec_uri": "https://github.com/terryncew/cole-portable-core"
+}

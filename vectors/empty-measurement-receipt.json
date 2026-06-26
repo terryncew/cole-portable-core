@@ -1,0 +1,61 @@
+{
+  "algorithm_id": "cole-portable-core-2.1-draft",
+  "attestation": "self",
+  "canonicalization_id": "olp-canonical-json-int-v1",
+  "checkpoint": null,
+  "input_receipt_hash": "8739b6ea3611e0e774b11fd34f659488513bebe40964c899cd49f762eff3703d",
+  "input_trace_id": "33333333333333333333333333333333",
+  "kind": "cole_measurement_receipt",
+  "measurement": {
+    "digest": {
+      "delta_hol_micros": null,
+      "epsilon_micros": null,
+      "kappa_micros": null,
+      "phi_star_micros": null,
+      "vkd_micros": null
+    },
+    "drift_vector": {
+      "claim_micros": null,
+      "evidence_micros": null,
+      "relation_micros": null
+    },
+    "semantic_graph_hash": "93687351a67667cbccd98ba2b8e9bafaa31e7dd1c799621c214dbbcbeab55f08",
+    "status": "white",
+    "support": {
+      "claim_count": 0,
+      "supported_claim_count": 0,
+      "ucr_micros": null,
+      "unsupported_claim_count": 0
+    }
+  },
+  "payload_hash": "2fe5d630d864aae683120947966bdc039b9edffeb52b0eb3b9a6fc9e4995f505",
+  "previous_input_receipt_hash": null,
+  "profile": {
+    "alpha_e_micros": 300000,
+    "alpha_k_micros": 500000,
+    "amber_dhol_micros": 350000,
+    "amber_epsilon_micros": 400000,
+    "amber_kappa_micros": 750000,
+    "calibration_corpus_hash": null,
+    "calibration_sample_count": 0,
+    "calibration_status": "uncalibrated_reference",
+    "dhol_claim_weight_micros": 333334,
+    "dhol_evidence_weight_micros": 333333,
+    "dhol_relation_weight_micros": 333333,
+    "epsilon_window": 10,
+    "i_c_micros": 1000000,
+    "kappa_critical_micros": 850000,
+    "phi_min_micros": 200000,
+    "profile_id": "cole-reference-prior-1",
+    "signal_schema_id": null,
+    "smoothing_window": 1,
+    "stability_delta_micros": 10000
+  },
+  "receipt_version": "0.1-draft",
+  "signature": {
+    "algorithm": "Ed25519",
+    "public_key": "a09aa5f47a6759802ff955f8dc2d2a14a5c99d23be97f864127ff9383455a4f0",
+    "value": "d56cd6c508e3f2be5aea2ee0ed357657c6dce8251a4154bf84f187f21ff1f1a3c14a70a22c43673e87f57ee99e8ca05e2d330e4655eaf8f98140d3b9b70f160b"
+  },
+  "spec_uri": "https://github.com/terryncew/cole-portable-core"
+}
