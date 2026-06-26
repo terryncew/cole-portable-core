@@ -1,0 +1,37 @@
+{
+  "algorithm_id": "cole-conformance-input-0.1",
+  "attestation": "self",
+  "canonicalization_id": "olp-canonical-json-int-v1",
+  "capture_loss": false,
+  "capture_status": "provisional",
+  "completion_policy": {
+    "grace_millis": 30000,
+    "semconv_schema_id": "test.otel.v1",
+    "type": "root_close_plus_grace"
+  },
+  "dropped_span_count": 0,
+  "kind": "coherence_input_receipt",
+  "observed_span_count": 3,
+  "payload_hash": "5deb86c2ce29a22a678ef0f73ac6a322813b5f5033a729af7bad48694f25d67a",
+  "receipt_version": "0.1",
+  "seal_reason": "grace_elapsed",
+  "semantic_claims": true,
+  "semantic_graph_hash": "8c264b7365760c3ba0a4040203a7a7a69bded1bf98e616a358470bf34089412c",
+  "signal_points_micros": [
+    500000,
+    500000,
+    500000
+  ],
+  "signal_schema_id": "test.normalized-signal.v1",
+  "signature": {
+    "algorithm": "Ed25519",
+    "public_key": "d04ab232742bb4ab3a1368bd4615e4e6d0224ab71a016baf8520a332c9778737",
+    "value": "3ff56c8cbf65d7bf97eb7007b2eae3dea40bd386db9fd1b5f525a63c2e61657614ac682ee5e3c31e2602d31c3cb03858b416e29dd12900635a1844b96b286f03"
+  },
+  "spec_uri": "https://github.com/terryncew/olp-wire-canon",
+  "state_cap": "white",
+  "trace_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "trace_root": "79b7b394757993372df3aa94157c3a4c68e4884091064983abd25427e2ba3072",
+  "tree_algorithm": "rfc6962-mth-sha256-promote-odd-v1",
+  "typed_event_status": "valid"
+}
